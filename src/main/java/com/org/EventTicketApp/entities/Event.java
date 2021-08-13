@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.org.entities;
+package com.org.EventTicketApp.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -26,25 +28,33 @@ import lombok.RequiredArgsConstructor;
  * @author DEEV
  */
 @Entity
-@Table(name= "events")
+@Data @NoArgsConstructor @AllArgsConstructor
 public class Event {
     
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
   private long id;
 
-  @Column(name = "title")
-  private String name;
-  @Column(name = "description")
+  @NonNull
+  private String title;
+  @NonNull
   private String description;
-  @Column(name = "capacity")
+  @NonNull
   private int capacity;
-  @Column(name = "date")
-  private String date;
-  @Column(name = "hour")
-  private String hour;
-  @Column(name = "location")
+  @NonNull
+  private int organizer;
+  @NotNull
+  private String startAt;
+  @NotNull
+  private String endAt;
+  @NotNull
+  private String type;
+  @NotNull
   private String location;
+  @NotNull
+  private String state;
+
+  
 
 
   
