@@ -5,12 +5,49 @@
  */
 package com.org.EventTicketApp.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
 /**
  *
  * @author DEEV
  */
-
+@Entity
+@Data @NoArgsConstructor @AllArgsConstructor @RequiredArgsConstructor
 public class TicketHelper {
+    @Id
+  @GeneratedValue(strategy=GenerationType.AUTO)
+  private long id;
+
+  @NonNull
+  private String logo;
+  @NonNull
+  private String titleSize;
+  @NonNull
+  private String descriptionSize;
+  @NonNull
+  private String locationSize;
+  @OneToOne(mappedBy = "customTicket")
+  private Event event;
+  @NonNull
+  @OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH }, fetch = FetchType.LAZY)
+  @JoinColumn(name = "tickets_id")
+ private Ticket mainTicket;  
+ 
 
     
 }

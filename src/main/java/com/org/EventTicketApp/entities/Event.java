@@ -7,6 +7,8 @@ package com.org.EventTicketApp.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
+import java.util.Collection;
+import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +16,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -28,7 +32,7 @@ import lombok.RequiredArgsConstructor;
  * @author DEEV
  */
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor @RequiredArgsConstructor
 public class Event {
     
   @Id
@@ -40,21 +44,26 @@ public class Event {
   @NonNull
   private String description;
   @NonNull
-  private int capacity;
-  @NonNull
-  private int organizer;
-  @NotNull
-  private String startAt;
-  @NotNull
-  private String endAt;
-  @NotNull
-  private String type;
-  @NotNull
   private String location;
-  @NotNull
+  @NonNull
+  private Date date;
+  @NonNull
+  private String time;
+  @NonNull
+  private int capacity;  
+   @NonNull
   private String state;
+  @NonNull
+  @ManyToOne
+   @JsonIgnore 
+  private EventManager eventManager;
+  @NonNull
+  @OneToOne
+   @JsonIgnore 
+  private TicketHelper customTicket;
 
-  
+   
+
 
 
   

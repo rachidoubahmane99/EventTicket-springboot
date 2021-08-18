@@ -5,30 +5,29 @@
  */
 package com.org.EventTicketApp.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.NotNull;
 import java.util.Collection;
-import java.util.Date;
-import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 /**
  *
  * @author DEEV
  */
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor @RequiredArgsConstructor
-public class EventManager {
+@Data @NoArgsConstructor @AllArgsConstructor
+public class Guest {
      @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
   private long id;
@@ -36,14 +35,12 @@ public class EventManager {
   @NonNull
   private String FullName;
   @NonNull
-  private String bio;
-  @NotNull
-  private String email;
+  private String Email;
   @NonNull
-  private String password;
-  @NonNull
-  private String avatar;
-  @OneToMany( cascade = CascadeType.ALL, mappedBy = "eventManager")
-  @JsonIgnore 
-  private List<Event> events;
+  private String cin;
+  @NonNull 
+  private String qrCode;
+  @ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH }, fetch = FetchType.LAZY)
+    @JoinColumn(name = "event_id")
+    private Event event;
 }
