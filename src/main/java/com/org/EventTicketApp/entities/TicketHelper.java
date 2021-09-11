@@ -6,6 +6,8 @@
 package com.org.EventTicketApp.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.NotNull;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -41,11 +43,13 @@ public class TicketHelper {
   private String descriptionSize;
   @NonNull
   private String locationSize;
-  @OneToOne(mappedBy = "customTicket")
+  @OneToOne( cascade = CascadeType.ALL, mappedBy = "customTicket")
+  @JsonIgnore 
   private Event event;
   @NonNull
-  @OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH }, fetch = FetchType.LAZY)
+  @OneToOne
   @JoinColumn(name = "tickets_id")
+  @JsonProperty("mainTicket")
  private Ticket mainTicket;  
  
 

@@ -36,38 +36,41 @@ private EventManagerRepo managerRepo;
 		SpringApplication.run(EventTicketAppApplication.class, args);
 	}
 
+        
             @Bean
             CommandLineRunner runner(){
             return args -> {
-                EventManager manager = new EventManager("rachid", "bio", "password", "avatar");
-                managerRepo.save(manager);
+               // EventManager manager = new EventManager("rachid", "bio", "password", "avatar");
+                //managerRepo.save(manager);
                 
-                Ticket ticket = new Ticket("demoid");
-                ticketrepo.save(ticket);
+               // Ticket ticket = new Ticket("demoid");
+                //ticketrepo.save(ticket);
                 
-                TicketHelper t = new TicketHelper("logo", "titleSize", "descriptionSize", "locationSize",ticket);
-                tickethelperrepo.save(t);
-                TicketHelper t2 = new TicketHelper("logo2", "titleSize", "descriptionSize", "locationSize",ticket);
-                tickethelperrepo.save(t2);
+               // TicketHelper t = new TicketHelper("logo1", "titleSize", "descriptionSize", "locationSize",ticket);
+                //tickethelperrepo.save(t);
+                //TicketHelper t2 = new TicketHelper("logober", "titleSize", "descriptionSize", "locationSize",ticket);
+                //tickethelperrepo.save(t2);
            
                 
-                Event v = new Event( "title", "description", "location", new Date(0), "time", 10, "state", manager, t);
+                //Event v = new Event( "title", "description", "location", new Date(0), "time", 10, "public", manager, t);
 
-               Event v2 = new Event( "title2", "description2", "location2", new Date(0), "time2", 10, "state2", manager, t2);
-
-                Guest g = new Guest(3, "FullName", "Email", "cin", "qrCode", v);
-                Guest g2 = new Guest(3, "FullName", "Email", "cin", "qrCode", v2);
+               //Event v2 = new Event( "title2", "description2", "location2", new Date(0), "time2", 10, "private", manager, t2);
+               
+               
+                //Guest g = new Guest( "FullName", "Email", "cin","090909090", "qrCode", v);
+                //Guest g2 = new Guest( "FullName", "Email", "cin","090909090", "qrCode", v2);
             
                 //guests.add(g);
                 //Event vv = new Event(0, "title", "description", "location", "date", "time", 10, "state", eventmanager, guests, t);
                 //Event v = new Event(3, "title", "description", "location", new Date(), "time", 10, "state", eventmanager,guests,t);
                 
-            repository.save(v);
-            repository.save(v2);
-            guestrepo.save(g);
-            guestrepo.save(g2);
+            //repository.save(v);
+           // repository.save(v2);
+           // guestrepo.save(g);
+           // guestrepo.save(g2);
  
             };
             }
+
 
 }

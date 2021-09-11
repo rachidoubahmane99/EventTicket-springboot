@@ -20,13 +20,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 /**
  *
  * @author DEEV
  */
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor @RequiredArgsConstructor
 public class Guest {
      @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
@@ -36,11 +37,14 @@ public class Guest {
   private String FullName;
   @NonNull
   private String Email;
+   @NonNull
+  private String phone;
   @NonNull
   private String cin;
   @NonNull 
   private String qrCode;
-  @ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH }, fetch = FetchType.LAZY)
+  @NonNull
+  @ManyToOne
     @JoinColumn(name = "event_id")
     private Event event;
 }

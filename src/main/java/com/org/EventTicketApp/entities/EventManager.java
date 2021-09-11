@@ -43,6 +43,8 @@ public class EventManager {
   private String password;
   @NonNull
   private String avatar;
+   private int active =1;
+  @NonNull
   @OneToMany( cascade = CascadeType.ALL, mappedBy = "eventManager")
   @JsonIgnore 
   private List<Event> events;
