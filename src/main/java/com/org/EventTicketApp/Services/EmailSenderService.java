@@ -39,7 +39,7 @@ public void sendmail(String destination , String subject , String content) throw
 
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("rachiddev05@gmail.com", "yourpasswordhere");
+                return new PasswordAuthentication("rachiddev05@gmail.com", "ivquznzighhubjvw");
             }
         });
         Message msg = new MimeMessage(session);
